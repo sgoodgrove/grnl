@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -f journal.txt ]; then
+
+    modDate=`date --utc --reference=journal.txt +'%Y%m%d'`
+    today=`date --utc +'%Y%m%d'`
+
+    if [ $modDate -lt $today ]; then
+        echo '\n--------------------------------------------------------------------------------\n'>>journal.txt
+    fi
+fi
+
+echo `date +'%Y-%m-%d'` "  $*" >>journal.txt
+
